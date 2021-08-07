@@ -1,0 +1,23 @@
+
+    <button style="background-color: rgb(29, 16, 216); color: white;" class="btn btn-default btn-rounded  mt-5 mx-5 mb-5"  data-toggle="modal" data-target="#myModal" type="submit">Mua Vé</button>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="color: white; background-image: url('/img/transparentShapesMainNav.png'), linear-gradient(270deg,#f8fc2ff1 0%, #2564EB  100%);">
+            <h1 class="modal-title" id="myModalLabel" ><strong>VUI LÒNG CHỌN SUẤT CHIẾU</strong></h1>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><strong>&times;</strong></button>
+         
+        </div>
+        <div class="modal-body">
+            <%- include('../cumrap/suatchieu.ejs') %>      
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+

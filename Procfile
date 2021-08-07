@@ -1,0 +1,1 @@
+web: set DEBUG=hikihuda:* & node ./bin/www

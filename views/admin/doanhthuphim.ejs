@@ -1,0 +1,126 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<%- include('./menu.ejs') %>
+    <diV class="container mb-5">
+        <div class="row">
+            <form id="form" method="POST">
+                <div class="row d-flex justify-content-center mb-5">
+                    <div class="row align-items-center" style="color: rgb(255, 255, 255);">
+                        <div class="col">
+                            <p class="lable" style="font-size: 18px; font-weight: bold">Ngày nhập từ: </p>
+
+                            <input type="date" name="txtNgayBatDau" placeholder="Chọn ngày" id="txtNgayBatDau" value="<%= to %>" />
+                        </div>
+                        <div class="col">
+                            <p class="lable" style="font-size: 18px; font-weight: bold">đến: </p>
+
+                            <input type="date" name="txtNgayKetThuc" placeholder="Chọn ngày" id="txtNgayKetThuc" value="<%= to %>" />
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                        </div>
+
+                    </div>
+            </form>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <table class="table table table-info table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Phim</th>
+                                <th scope="col">Số Vé</th>
+                                <th scope="col">Tổng Tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% var j=1; for(var i=0 ; i< rap.length ; i++){ var sove= data[i]/49000; %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= j %>
+                                    </th>
+                                    <td>
+                                        <%= rap[i] %>
+                                    </td>
+                                    <td>
+                                        <%= sove %>
+                                    </td>
+                                    <td>
+                                        <%= data[i] %>
+                                    </td>
+                                </tr>
+                                <% j++; } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <canvas style="background-color: white;" id="myChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+        </diV>
+
+    </div>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+        $(function() {
+            $("#datepicker1").datepicker();
+        });
+    </script>
+
+<% var lable =rap; var data1 = data %>
+<script>
+   var ctx = document.getElementById('myChart').getContext("2d");
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: <%-JSON.stringify(lable)%>,
+    datasets: [{
+      label: "Tổng tiền của phim",
+      data: <%-JSON.stringify(data1)%>,
+      backgroundColor: [
+      'rgba(255, 255, 0, 0.585)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(255, 0, 251, 0.449)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        responsive:false,
+        maintainAspectRatio: false
+      }
+    }
+  },
+});
+</script>
+<script type="text/javascript">
+  document.getElementById('txtNgayBatDau').valueAsDate = new Date();
+
+  document.getElementById('txtNgayKetThuc').valueAsDate = new Date();
+</script>

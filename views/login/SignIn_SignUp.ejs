@@ -1,0 +1,75 @@
+<div class="container-fluid headinglogin">
+    <div class="container-login " id="container">
+
+        <form class="form-login" action="/RegAndLogin/login-success" method="POST">
+
+            <h1>Đăng Nhập</h1>
+            <div class="social-container">
+                <a class="a-login" href="/auth/facebook" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a class="a-login" href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a class="a-login" href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <% if((typeof(message) !="undefined")||(typeof(messagesucess)!="undefined")) { %>
+                <h4>
+                    <p class="text-danger text-center">
+
+                        <%- message  %>
+                    </p>
+                    <p class="text-success text-center">
+
+                        <%- messagesucess  %>
+                    </p>
+                </h4>
+
+                <% } %>
+                    <input class="ip-login" name="email" type="email" placeholder="Email" required />
+                    <input class="ip-login" name="password" type="password" placeholder="Password" required/>
+                    <a class="a-login" href="/forgot">Quên mật khẩu?</a>
+
+                    <button type="submit" class="btn-login1">Đăng Nhập</button>
+
+        </form>
+
+        <!-- Modal -->
+        <div style="width:900px; height: 600px;" class="modal fade mt-5" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog form-dark" role="document">
+                <!--Content-->
+                <div class="modal-content card card-image">
+                    <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                        <!--Header-->
+                        <div class="modal-header text-center pb-1">
+                            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body" >
+                            <!--Body-->
+                            <form action="/RegAndLogin/signup-complete" method="POST">
+                                <h1 style="color: white;">Đăng ký</h1>
+
+                                <input class="ip-login" name="name" type="text" placeholder="Name" required />
+                                <input class="ip-login " name="email" type="email" placeholder="Email" required />
+                                <input class="ip-login " name="password" type="password" placeholder="Password" required title="minimum eight characters, at least one letter and one number" require pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
+                                <button type="submit" class="btn-login1">Đăng Ký</button>
+                                <% if( typeof(message) !="undefined") { %>
+                                    <div class="alert " role="alert">
+                                        <%- message %>
+                                    </div>
+                                    <% } %>
+                            </form>
+                            <!--Grid row-->
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- Modal -->
+        <div style="background-color: rgba(219, 203, 203, 0.596); ">
+            <button class="btn btn-default btn-rounded btn-login1 mt-5" data-toggle="modal" data-target="#darkModalForm" type="submit">Tạo Tài Khoản</button>
+        </div>
+    </div>
+</div>

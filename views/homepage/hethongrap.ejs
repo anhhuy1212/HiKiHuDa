@@ -1,0 +1,74 @@
+<head>
+    <link rel="stylesheet" href="css/profile.css">
+
+</head>
+<div class="container-fluid ">
+    <!--  tiêu đề của danh sách -->
+    <div class="row ml-10 mr-5 mt-5 list">
+        <div class="list-group list-group-horizontal " role="tablist">
+            <% var i= 0; var listid=[]; listcinema.forEach(function(value, index){ listid.push(value.id);
+                if(i==0){%>
+                <a class="list-group-item list-group-item-action  active" data-toggle="list" href="#tab_<%=i%>" role="tab">
+                    <% }else{ %>
+                        <a class="list-group-item list-group-item-action  " data-toggle="list" href="#tab_<%=i%>" role="tab">
+                            <% } %>
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <%= value.ten %>
+                        </a>
+
+                        <% i++;}); %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="tab-content content">
+            <% for(var j=0; j< mang.length ;j++){ 
+                if(j==0){
+                %>
+
+                <div class="tab-pane fade show active" style="text-align: center;" id="tab_<%=j%>" role="tabpanel">
+                    <% }else{ %>
+                        <div class="tab-pane fade show " style="text-align: center;" id="tab_<%=j%>" role="tabpanel">
+                            <% } %>
+                                <div class="row align-items-start">
+                                    <% mang[j].forEach(function(item, index){ %>
+                                        <div class="col itemrap">
+                                            <div class="cardinfo dongkhoi">
+                                                <div class="card" style="width: 22rem;">
+                                                    <img class="card-img-top" src="img/rap/<%= item.image %>" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <div class="info ">
+
+                                                            <a style="display: block;" target="_blank" data-id="0000000005" class="inside" href="https://goo.gl/maps/sX9Z7K3A8ca84NWr7">
+
+                                                                <h3 class="title">
+                                                                    <%= item.ten %>
+                                                                </h3>
+
+                                                                <i class="fa fa-map-marker"></i>  <%= item.map %>
+
+                                                            </a>
+                                                            <br>
+                                                            <a class="btn btn-primary xem" href="hethongrap/rapchitiet/<%= item.id %>" target="_blank" class="btn--location"> Xem Suất Chiếu</a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <% }); %>
+
+                                </div>
+
+                        </div>
+                        <% } %>
+
+
+
+
+                            <!--  kết thức -->
+                </div>
+        </div>
+
+
+    </div>

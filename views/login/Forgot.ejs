@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HiKiHuDa</title>
+    <!-- 
+
+HiKiHuDa
+
+-->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
+
+
+    <link rel="stylesheet" href="/css/forgot.css">
+
+
+    <script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+
+<body>
+    <div class="page-heading">
+        <div class="container container-forgot">
+            <form method="POST">
+                <div class="form-forgot">
+                    <h2>Quên Mật Khẩu</h2>
+                    <h5>Quên mật khẩu? Không sao, chúng tôi sẽ sửa nó. Chỉ cần nhập email của bạn bên dưới và chúng tôi sẽ gửi cho bạn hướng dẫn khôi phục mật khẩu vào email của bạn. Làm theo các bước đơn giản để quay lại tài khoản của bạn.</h5>
+                    <h3>Email của bạn</h3>
+                    <input class="form-control ip-login" name="email" type="email" placeholder="Enter your email here..." required="">
+
+                    <button type="submit" class="btn-success">Gửi</button><br>
+
+                    <a class="a-forgot" href="/">Quay về trang chủ.</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+
+        document.getElementById("login-logout").onclick = function() {
+            document.getElementById("sign-in-container").style.display = 'none';
+            document.getElementById("sign-up-container").style.display = 'block';
+        };
+    </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+
+    <script src="/js/vendor/bootstrap.min.js"></script>
+
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

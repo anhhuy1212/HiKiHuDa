@@ -1,0 +1,218 @@
+<%- include('./menu.ejs') %>
+    <div class="titleAdmin">
+        <h1 class="text-center titleAdmin">Danh Sách Phim</h1>
+    </div>
+
+    <button type="button" class="pull-right btn btn-default btnAdmim" data-toggle="modal" data-target="#myModal2" style="text-decoration: none; color: #323232; margin-bottom: 20px; margin-top: -50px;margin-right: 200px;">
+    <img src="./img/new.png"> <strong>Thêm Phim</strong>
+</button>
+
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data" action="/3/addPhim">
+                        <fieldset class="themSanPham titleAdmin">
+                            <legend style="text-align: center">Thêm Phim Mới</legend>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Tên Phim: </span>
+                                <div class="col-xs-6">
+                                    <input type="text" name="tenphim" id="txtTen" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Loại Phim: </span>
+                                <div class="col-xs-6">
+                                    <input type="text" name="loaiphim" id="loaiphim" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">chi tiết: </span>
+                                <div class="col-xs-6">
+                                    <textarea class="form-control" name="chitiet" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Thời lượng:: </span>
+                                <div class="col-xs-6">
+                                    <input type="text" name="thoiluong" id="txtTen" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">ngày công chiếu: </span>
+                                <div class="col-xs-6">
+                                    <input type="datetime-local" name="ngaycongchieu" id="txtTen" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">category: </span>
+                                <div class="col-xs-6">
+                                    <input type="number" name="category" min="1" id="txtTen" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">trailer: </span>
+                                <div class="col-xs-6">
+                                    <input type="text" name="trailer" id="txtTen" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Hình:  </span>
+                                <div class="col-xs-6">
+                                    <img src="" id="imgProduct">
+                                    <input type="file" name="fHinhPhim" id="btnUpLoadImg" accept="image/*" multiple />
+                                    <i id="errHinh"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Giá Vé: </span>
+                                <div class="col-xs-6">
+                                    <input type="number" value="0" name="txtGia" id="txtGia" style="width: 100%" />
+                                    <i id="errGia"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Mô tả: </span>
+                                <div class="col-xs-6">
+                                    <textarea type="text" name="txtMoTa" style="width: 100%"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <div class="col-xs-12">
+                                    <input type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Thêm mới" class="btn btn-success pull-right" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("document").ready(function() {
+
+            $("#btnUpLoadImg").change(function(e) {
+                var fileName = e.target.files[0].name;
+                //alert(fileName);
+                $("#imgProduct").attr("src", "images/" + fileName);
+                $("#imgProduct").attr("width", 100);
+                $("#imgProduct").attr("height", 100);
+            });
+        });
+
+        function KiemTra() {
+            var ten = document.getElementById("txtTen");
+            var err = document.getElementById("errTen");
+            if (ten.value.length == 0) {
+                err.innerHTML = "Tên sản không được rỗng";
+                ten.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            var hinh = document.getElementById("btnUpLoadImg");
+            var err = document.getElementById("errHinh");
+            if (hinh.value.length == 0) {
+                err.innerHTML = "Vui lòng chọn hình!";
+                hinh.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            var gia = document.getElementById("txtGia");
+            var err = document.getElementById("errGia");
+            if (gia.value.length == 0) {
+                err.innerHTML = "Giá sản phẩm không được rỗng";
+                gia.focus();
+                return false;
+            } else if (gia.value <= 0) {
+                err.innerHTML = "Giá sản phẩm phải lớn hơn 0";
+                gia.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            var ton = document.getElementById("txtTon");
+            var err = document.getElementById("errTon");
+            if (ton.value.length == 0) {
+                err.innerHTML = "Số lượng tồn không được rỗng";
+                ton.focus();
+                return false;
+            } else if (ton.value <= 0) {
+                err.innerHTML = "Số lượng tồn phải lớn hơn 0";
+                ton.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            return true;
+        }
+    </script>
+    <!-- Hiển thị danh sách các sản phẩm -->
+    <div class="container mx-5 tableAdmin">
+        <table class="table table-striped table-hover table-bordered text-center colorText tableAdmin   ">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên phim</th>
+                    <th>Poster</th>
+                    <th>Image1</th>
+                    <th>Image2</th>
+                    <th>Chi tiết</th>
+                    <th>Thời lượng</th>
+                    <th>Giá Vé</th>
+                    <th>Thể loại</th>
+                    <th>Thao Tác</th>
+
+                </tr>
+            </thead>
+            <% var i=1; listphim.forEach(function(value, index){ %>
+                <tr>
+                    <td>
+                        <%= i %>
+                    </td>
+                    <td>
+                        <%= value.ten %>
+                    </td>
+                    <td>
+                        <img class="imgPhim" src="./img/phims/<%= value.poster %>" alt="">
+                    </td>
+                    <td>
+                        <img class="imgPhim" src="./img/phims/<%= value.image1 %>" alt="">
+                    </td>
+                    <td>
+                        <img class="imgPhim" src="./img/phims/<%= value.image2 %>" alt="">
+                    </td>
+                    <td>
+                        <%= value.chitiet %>
+                    </td>
+                    <td>
+                        <%= value.thoiluong %>
+                    </td>
+                    <td>490000</td>
+                    <td>
+                        <%= value.theloai %>
+                    </td>
+                    <td>
+
+                        <a href="/3/<%= value.id %>/done" class="crud-admin">
+                            <img src="./img/delete.png" alt="">
+                        </a>
+
+
+                    </td>
+                </tr>
+                <% i++; }); %>
+
+
+        </table>
+    </div>

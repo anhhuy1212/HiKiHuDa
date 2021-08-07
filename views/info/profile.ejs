@@ -1,0 +1,137 @@
+<head>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<div class="container-fluid ">
+    <!--  tiêu đề của danh sách -->
+    <div class="row ml-10 mr-5 mt-5 list">
+        <div class="list-group list-group-horizontal " role="tablist">
+            <a class="list-group-item list-group-item-action  active" data-toggle="list" href="#account" role="tab">
+                <i class="fa fa-user mr-2" aria-hidden="true"></i>Tài Khoản
+            </a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
+                <i class="fa fa-key mr-2" aria-hidden="true"></i>Mật Khẩu
+            </a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#product" role="tab">
+                <i class="fa fa-ticket mr-2" aria-hidden="true"></i> Lịch Sử Đặt Vé
+            </a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#order" role="tab">
+              Lịch Sử Đánh Giá
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="tab-content">
+            <div class="tab-pane fade show active" style="background-color: rgba(118, 63, 150, 0.137);" id="account" role="tabpanel">
+                <div class="cardinfo">
+
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="row ml-2">
+                                <div class="col-md-7">
+                                    <% profile1.forEach(function(item, index){ %>
+                                        <div class="form-group ">
+                                            <label for="inputUsername">Username</label>
+                                            <input type="text" class="form-control" value="<%= item.hoten %>" id="inputUsername" name="inputUsername" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail4">Email</label>
+                                            <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="<%= item.email %>" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAddress">Address</label>
+                                            <input type="text" class="form-control" name="inputAddress" id="inputAddress" value="<%= item.diachi %>" placeholder="1234 Main St">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAddress2">Phone</label>
+                                            <input type="text" class="form-control" value="<%= item.sdt %>" name="inputPhone" id="inputPhone" placeholder="Apartment, studio, or floor">
+                                        </div>
+                                        <% }); %>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-right">
+                                        <img alt="Andrew Jones" src="/img/doremon.jpg" class="rounded-circle img-responsive mt-2" width="260" height="140">
+                                        <div class="mt-2">
+                                            <div class="avatar-uploader__avatar-image" style="background-image: url(&quot;https://cf.shopee.vn/file/d4daa292117d265864ef3af92ed73d35_tn&quot;);"></div>
+                                            <input type="file" class="avatar-uploader__avatar-image" id="avatar" name="avatar" />
+                                        </div>
+                                        <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-edit"><button type="submit" class="btn btn-warning">Cập Nhật</button></div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Thay password -->
+            <div class="tab-pane fade" id="password" role="tabpanel">
+                <div class="cardinfo">
+                    <div class="card-body">
+                        <form method="POST" action="/info/updatepassword">
+                            <div class="row ml-2">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="inputPasswordCurrent">Mật khẩu hiện tại</label>
+                                        <input type="password" name="curPassword" class="form-control" id="curPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPasswordNew">Mật khẩu mới</label>
+                                        <input type="password" name="password" class="form-control" id="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPasswordNew2">Xác nhận mật khẩu</label>
+                                        <input type="password" name="confirmpassword" class="form-control" id="confirmpassword">
+                                    </div>
+                                    <div class="btn-edit"><button type="submit" class="btn btn-warning">Cập Nhật</button></div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vé mua -->
+            <div class="tab-pane fade" id="product" role="tabpanel">
+                <div class="cardinfo">
+                    <div class="card-body">
+                        <h5 class="card-title">Danh sách Đơn Hàng</h5>
+                        <table class="table table-striped table-hover table-bordered" style="background-color: white; ">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã đơn đặt hàng</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Tổng thành tiền</th>
+                                    <th>Xem</th>
+                                </tr>
+                            </thead>
+                            <% var i=1; history.forEach(function(item, index){ %>
+                                <tr>
+                                    <td>
+                                        <%= i %>
+                                    </td>
+                                    <td>
+                                        <%= item.madatcho %>
+                                    </td>
+                                    <td>
+                                        <%= item.thoigiandat %>
+                                    </td>
+                                    <td>
+                                        <%= item.tongtien %>
+                                    </td>
+                                    <td><a type="button" href="info/madonhang/<%= item.madatcho %>" class="btn btn-primary">Chi Tiết</a></td>
+                                    <% i++; }); %>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--  kết thức -->
+        </div>
+    </div>
+
+
+</div>

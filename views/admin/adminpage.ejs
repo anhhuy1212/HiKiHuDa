@@ -1,0 +1,197 @@
+<%- include('./menu.ejs') %>
+    <div class="titleAdmin">
+        <h2 class="text-center">Danh Sách Suất Chiếu</h2>
+    </div>
+
+    <button type="button" class="pull-right btn btn-default btnAdmim" style="text-decoration: none; color: #323232; margin-bottom: 20px; margin-top: -50px;margin-right: 200px;" data-toggle="modal" data-target="#myModal2">
+    <img src="./img/new.png"> <strong>Thêm Phim</strong>
+</button>
+
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="POST" action="/admin/addSuatrap">
+                        <fieldset class="themSanPham titleAdmin">
+                            <legend style="text-align: center">Thêm Suất Chiếu</legend>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Thời Gian Bắt Đầu: </span>
+                                <div class="col-xs-6">
+                                    <input type="text" name="StartTime" id="txtTen" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Thời Gian Kết Thúc: </span>
+                                <div class="col-xs-6">
+                                    <input type="text" name="EndTime" id="txtketthuc" style="width: 100%" />
+                                    <i id="errTen"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Ngày Chiếu: </span>
+                                <div class="col-xs-6">
+                                    <input type="date" name="DayShow" id="txtGia" style="width: 100%" />
+                                    <i id="errGia"></i>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Mã Phòng: </span>
+                                <div class="col-xs-6">
+                                    <select name="maphong" id="maphong">
+                                    <% for(var i=1; i<=7 ;i++){ %>
+                                    <option value="<%= i %>">Phòng 0<%= i %></option>
+                                    <% } %>
+                                  </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Rạp: </span>
+                                <div class="col-xs-6">
+                                    <select name="rap" id="rap">
+                                    <% var i=1; listrap.forEach(function(value, index){ %>
+                                    <option value="<%= value.id %>"><%= value.ten %></option>
+                                    
+                                    <% }); %>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <span class="col-xs-6">Phim: </span>
+                                <div class="col-xs-6">
+                                    <select name="phim" id="phim">
+                                    <% var i=1; listphim.forEach(function(value, index){ %>
+                                        <option value="<%= value.id %>"><%= value.ten %></option>
+                                        
+                                        <% }); %>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 input-admin">
+                                <div class="col-xs-12">
+                                    <input type="submit" value="Thêm mới" class="btn btn-success pull-right" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("document").ready(function() {
+
+            $("#btnUpLoadImg").change(function(e) {
+                var fileName = e.target.files[0].name;
+                //alert(fileName);
+                $("#imgProduct").attr("src", "images/" + fileName);
+                $("#imgProduct").attr("width", 100);
+                $("#imgProduct").attr("height", 100);
+            });
+        });
+
+        function KiemTra() {
+            var ten = document.getElementById("txtTen");
+            var err = document.getElementById("errTen");
+            if (ten.value.length == 0) {
+                err.innerHTML = "Tên sản không được rỗng";
+                ten.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            var hinh = document.getElementById("btnUpLoadImg");
+            var err = document.getElementById("errHinh");
+            if (hinh.value.length == 0) {
+                err.innerHTML = "Vui lòng chọn hình!";
+                hinh.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            var gia = document.getElementById("txtGia");
+            var err = document.getElementById("errGia");
+            if (gia.value.length == 0) {
+                err.innerHTML = "Giá sản phẩm không được rỗng";
+                gia.focus();
+                return false;
+            } else if (gia.value <= 0) {
+                err.innerHTML = "Giá sản phẩm phải lớn hơn 0";
+                gia.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            var ton = document.getElementById("txtTon");
+            var err = document.getElementById("errTon");
+            if (ton.value.length == 0) {
+                err.innerHTML = "Số lượng tồn không được rỗng";
+                ton.focus();
+                return false;
+            } else if (ton.value <= 0) {
+                err.innerHTML = "Số lượng tồn phải lớn hơn 0";
+                ton.focus();
+                return false;
+            } else {
+                err.innerHTML = "";
+            }
+            return true;
+        }
+    </script>
+    <div class="container">
+        <!-- Hiển thị danh sách các sản phẩm -->
+    <table class="table table-striped table-hover table-bordered text-center colorText tableAdmin   ">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Bắt Đầu</th>
+                <th>Kết Thúc</th>
+                <th>Ngày Chiếu</th>
+                <th>Phim</th>
+                <th>Rạp</th>
+                <th>Phòng</th>
+                <th>Giá Vé</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <% var i=1; listsc.forEach(function(value, index){ %>
+            <tr>
+                <td>
+                    <%= i %>
+                </td>
+                <td>
+                    <%= value.batdau %>
+                </td>
+                <td><%= value.ketthuc %></td>
+                <td>
+                    <%= value.ngaychieu %>
+                </td>
+                <td>
+                    <%= value.rap.ten %>
+                </td>
+                <td>
+                    <%= value.phim.ten %>
+                </td>
+                <td>
+                    <%= value.maphong %>
+                </td>
+                <td>49000</td>
+                <td>
+
+                    <a href="/admin/<%= value.id %>/done" class="crud-admin">
+                        <img src="./img/delete.png" alt="">
+                    </a>
+
+
+                </td>
+            </tr>
+            <%i++; }); %>
+
+
+
+    </table>
+    </div>

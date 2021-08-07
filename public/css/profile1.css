@@ -1,0 +1,73 @@
+
+  .list a{
+    width: 290px;
+    font-size: 25px;
+    color: #055FD8;
+  }
+  .list{
+    margin-left: 150px;
+  }
+  .card-title{
+    color: #055FD8;
+  }
+  .pageprofile a{
+    color: #ebee22;
+   
+  }
+  
+  .list-group-item.active{
+    color: white;
+    background-color: #055FD8;
+    border-color: #1c1d1707;
+    
+  }
+ /*  .tab-pane{
+ 
+   background-color: rgba(247, 247, 247, 0.137);
+  } */
+  .list-group-item{
+    background-color:white;
+    height: 70px;
+    color: black;
+    font-size: 25px;
+    width: 200px;
+  }
+  .card-body{
+    margin-top: 1px;
+    color: whitesmoke;
+  }
+  .pageprofile h1{
+    color: #d4dd29  ;
+    margin-bottom: 50px;
+   
+  }
+  .btn-edit{
+    text-align: center;
+  }
+  
+  .tab-content{
+    width: 78%;
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-bottom: 100px;
+   
+  }
+  .pageprofile textarea{
+    border-color: #055FD8;
+  }
+  .pageprofile button{
+    background-color: #d4dd29;
+  }
+  .pageprofile input{
+    border-color: #055FD8;
+    
+  }
+  .pageprofile input[type=submit]{
+    background-color: #055FD8;
+    
+  }
+  
+  .page-heading em {
+    font-style: normal;
+    font-weight: 200;
+  }

@@ -1,0 +1,48 @@
+<% phimct.forEach(function(item, index){ %>
+    <div style="background-color: aliceblue;  border: 2px solid rgba(231, 241, 30, 0.925); padding: 10px; margin-top: 10px;
+                                                     border-radius: 25px;" class="gridCol-l-4 gridCol-m-4 gridCol-s-12">
+        <div class="bookingCartContainer " aria-live="polite">
+            <div>
+                <h2 class="m_ta_c">
+                    <%= item.ten %>
+                </h2>
+                <p class="bookingFilmDuration m_ta_c">PG-
+                    <%= maphong %> |
+                        <%= giochieu %>
+                </p>
+                <div class="bookingCartFilmDetails bookingCartBorderTop">
+                    <p>Địa Điểm: <span class="bold"><%= rapname %></span></p><span>Màn hình</span>
+                    <span class="bold"> <%= maphong %></span><br>Vào Lúc: <span class="bold"><%= ngaychieu %></span><br>Bắt đầu:
+                    <span class="bold"><%= giochieu %> </span></p>
+                </div>
+            </div>
+            <div class="bookingCartBorderTop bookingCartTicketsContainer">
+                <div class="bookingCartTicketRow">
+                    <div class="cartTitle"><span class="cartQuantity"><strong><span id="length"></span></strong> X<input type="text" name="demo" id="demo"></div>
+                    </span>
+                    <div id="price" class="cartValue"></div>
+                </div>
+            </div>
+            <div class=""></div>
+            <div class="bookingCartBorderTop">
+                <div class="cartTitle">Thanh toán:</div>
+                <div>Tiền Mặt</div>
+            </div>
+            <div class="bookingCartBorderTop bookingCartServiceFee">
+                <div class="cartTitle">Phí đặt phòng:</div>
+                <div class="cartValue">Áp dụng trong bước tiếp theo.</div>
+            </div>
+            <div class="bookingCartBorderTop bookingCartTotal">
+                <div class="cartTitle">TỔNG CỘNG :</div>
+                <div id="total" name="total" class="cartValue"><input type="text" name="myText" id="myText" value="">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+        <script>
+            $("input").on("click", function() {
+                $("#log1").html($("input:checked").val());
+            });
+        </script>

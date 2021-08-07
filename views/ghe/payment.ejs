@@ -1,0 +1,53 @@
+<div class="">
+    <h2 class="m0">Chọn Phương Thức Thanh Toán</h2>
+    <div class="bookingPaymentDivider"></div>
+    <div class="bookingPaymentMethod bookingPaymentMethod--box is-active">
+        <button data-toggle="collapse" data-target="#collapseExample1" type="button" class="bookingPaymentMethodButton bookingPaymentMethodButton--gift" aria-expanded="true" tabindex="0"><input type="radio" name="fruit" value="Card Credit" id="apple">Sử Dụng Gift Card
+            <span class="bookingPaymentMethodButtonIcons">
+            <img src="/img/Visa.png" alt="gift card icon"></span>
+        </button>
+        <div class="collapse" id="collapseExample1" style="color: crimson;">
+            <div class="collapse" id="collapseExample" class="bookingPaymentMethodForm" style="display: block;">
+                <legend>Thanh toán bằng Gift Card</legend>
+                <div>
+                    <p><span>Để thanh toán bằng gift card, vui lòng nhập mã bên dưới.</span></p>
+                </div>
+                <div class="bookingPaymentGCFields">
+                    <div class="formRow">
+                        <label class="formLabel" for="bookGiftCard">Mã Gift Card </label>
+                        <input class="formField" type="text" placeholder="Gift Card No." autocomplete="false" id="bookGiftCard" value="">
+                    </div>
+                    <div class="formRow">
+                        <label class="formLabel" for="bookGiftPin">Mã PIN</label>
+                        <input class="formField" type="text" placeholder="PIN" autocomplete="false" id="bookGiftPin" value="">
+                    </div>
+                    <div class="formRow">
+                        <button class="btn-primary" disabled="">KIỂM TRA GIFT CARD</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bookingPaymentMethod  bookingPaymentMethod--divider">
+    <button data-toggle="collapse" data-target="#collapseExample" type="button" class="bookingPaymentMethodButton bookingPaymentMethodButton--card" aria-expanded="false" tabindex="0">
+        <input type="radio" name="fruit" value="Tiền Mặt" id="orange">Thanh Toán Tiền Mặt
+    </button>
+    <div class="collapse" id="collapseExample" style="color: crimson;">
+        <div class="card card-body">
+            <strong>Hệ thống sẽ hủy vé nếu khách hàng không thanh toán trước 30 phút.</strong>
+
+        </div>
+    </div>
+</div>
+<div class="bookingPaymentMethod  bookingPaymentMethod--divider">
+    <button data-toggle="collapse" data-target="#collapseExample2" type="button" class="bookingPaymentMethodButton bookingPaymentMethodButton--card" aria-expanded="false" tabindex="0">
+        <input type="radio" name="fruit" value="Zalopay" id="banana">Zalopay
+    </button>
+    <div class="collapse" id="collapseExample2" style="color: crimson;">
+        <div class="card card-body">
+
+            <img src="/img/zalopay.png">
+        </div>
+    </div>
+</div>

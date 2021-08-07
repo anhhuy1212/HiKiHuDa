@@ -1,0 +1,43 @@
+<div class="hero">
+
+    <div class="heroItem" data-hero-item>
+
+        <div class="heroItemImageContain">
+            <div class="heroItemImage" style="background-image:url(/img/timkiem.jpg)" role="img" aria-label="F9 The Fast Saga"></div>
+            <div class="heroItemImageMobile" style="background-image:url(/Media/5113/f9search-hero-mobile.jpg)" role="img" aria-label="F9 The Fast Saga"></div>
+        </div>
+        <form method="POST">
+            <div id="stackedSearchBox" class="stackedSearchBox">
+                <div class="stackedTitleSearchForm">
+                    <input id="heroSearchInput" name="heroSearchInput" class="w100 stackedSearch" type="text" placeholder="Nhập Tên Phim" aria-label="Find a movie" autocomplete="false" />
+                    <button value="button1" name="currentPatient" type="submit" class="btn btn-primary mt-3">Tìm Kiếm</button>
+                </div>
+            </div>
+    </div>
+</div>
+
+<%- include('../homepage/title.ejs') %>
+    </form>
+    <div class="container-fluid">
+        <!-- Categories grid-->
+        <div class="row mx-5 ">
+            <!--  <div class="col-md-12 text-center topphongve">
+            <img style="width: 50%; height: 150px; background-repeat: no-repeat;
+            background-size: cover;" src="/img/dangchieu.png">
+        </div> -->
+            <!-- Category-->
+            <% phim1.forEach(function(item, index){ %>
+                <div class="col-md-3 col-sm-6 mt-5 mb-5">
+                    <div class="filmsListItem active">
+                        <img height="300" width="326" src="/img/phims/<%= item.image2 %>" alt="The Hitman's Wife's Bodyguard poster" title="The Hitman's Wife's Bodyguard poster" class="filmsListItemPoster">
+                        <div class="filmsListItemOverlay">
+                            <h2 class="filmsListItemTitle">
+                                <%= item.ten %>
+                            </h2>
+                            <a class="btn-tickets" href="cumrap/chitiet/<%= item.id %>" aria-label="Get tickets for The Hitman's Wife's Bodyguard">Chi Tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>

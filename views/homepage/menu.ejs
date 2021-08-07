@@ -1,0 +1,144 @@
+<!-- <div class="filmListShowtimes">
+    <div class="rowSpacingBottom">
+        <div class="filterDate">
+            <button class="dn_mobile">
+                <span class="displayBtnDate">Jun 20</span>
+                <span class="displayBtnDay">Today</span>
+            </button>
+            <button id="films-datepicker-btn" data-datepicker-btn="Select a date" data-date="2021-06-22" aria-haspopup="true" aria-label="More Dates" aria-expanded="false"><span class="displayBtnDate">
+                <i class="fas fa-angle-double-right"></i></span><span class="displayBtnDay">MORE DATES</span>
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<div class="rowSpacingBottom">
+    <div class="container-fluid tabtable " name="tabtable" style="margin-left: 20px;">
+        <ul class="nav nav-pills nav-stacked " >          
+            <% 
+            let daysRequired = 6;
+            var date = new Date();
+            date.setDate(date.getDate()-1);
+            var weekday = new Array(7);
+            weekday[0] = "Chủ Nhật";
+            weekday[1] = "Thứ hai";
+            weekday[2] = "Thứ ba";
+            weekday[3] = "Thứ tư";
+            weekday[4] = "Thứ năm";
+            weekday[5] = "Thứ sáu";
+            weekday[6] = "Thứ bảy";
+            for(let i = 0; i <= daysRequired; i++) {
+                date.setDate(date.getDate()+1);
+            %>
+            <% if(i ==0){ %>
+            <li class="active" >
+                <% }else{ %>
+                    <li class="" >
+                    <%}%>
+                <a class="list-group-item ml-1"  href="#tab_<%=i%>" data-toggle="tab" style="height: 85px;font-size: 20px;border: 3px solid rgb(250, 250, 250);
+                    border-radius: 15px;">
+
+                    <%=   "  "+ i ==0 ? 'Hôm nay' : weekday[date.getDay()]%>
+                    <br><strong>
+                        <%=  " "+date.getDate()+" tháng "+(date.getMonth()+1) %>
+                        </strong>
+                </a>
+            </li>
+            <%} %>
+
+        </ul>
+      
+          
+        <!-- Synopsis column -->
+        
+            
+            <div class="tab-content" >
+                 <!--   <div class="tab-pane active" id="tab_0">  
+                       Helo
+                   </div>
+                   <div class="tab-pane" id="tab_1">
+                    Hiiii
+                    </div>
+                    <div class="tab-pane" id="tab_2">
+                        Hiiii
+                    </div>
+                    <div class="tab-pane" id="tab_3">
+                        Hiiii
+                        </div>
+                        <div class="tab-pane" id="tab_4">
+                            Hiiii
+                            </div> -->
+                <%  var len= valuedate.length;
+               
+                for (var i=0; i< len;i++){ 
+                    if(i==0){ %>
+                        <div class="tab-pane active" id="tab_<%=i%>">  
+                    <% }else{  %>
+                        <div class="tab-pane" id="tab_<%=i%>">
+                    <%}%>
+                     
+                   <!--  <tbaconten -->
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="panel-title">
+                                        <button><h3><b>🎬HỒ CHÍ MINH</b></h3></button>
+                                    </span>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <%  for(var i = 0; i < 100; i++){
+                                                            var flag = 0; 
+                                                            valuedate.forEach(function(item, index){ 
+                                                                    if(item.rapId == i){
+                                                                        flag = 1;
+                                                                    }
+                                                                });
+                                                            
+                                                            if(flag == 1){ %>
+                                                                <div class="col-md-12 col-sm-12 col-xs-12 cinemaname">Tên rạp lấy từ ID <%= i%></div>
+                                                                                                                              
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <ul class="nav nav-pills">
+                                                                                <% valuedate.forEach(function(item, index){ %>
+                                                                               <% if(item.rapId == i){ %>
+                                                                                     <li><a rel="nofollow"  style="background-color: rgb(78, 78, 255);color: white;" 
+                                                                                        class="showtime_btn btn btn-default seat_2" id="81205015"  role="button">
+                                                                                        <%= item.batdau %> <small>&nbsp;</small></a></li>
+                                                                                <%}});%>
+                                                                            </ul>
+                                                                        </div>
+                                                                    
+                                                                
+                                                            <% }
+                                                    } %>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                     
+               <!--    <Tp HCM></Tp> -->
+               
+
+            <!--    ketthua tab -->
+
+                    </div>
+                
+                <% }%>
+
+            </div>
+  
+        </div>
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        
+      

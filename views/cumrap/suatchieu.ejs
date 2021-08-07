@@ -1,0 +1,113 @@
+<div class="rowSpacingBottom">
+    <div class="container-fluid tabtable " name="tabtable" style="margin-left: 20px;">
+
+        <ul class="nav nav-pills nav-stacked ">
+            <% 
+            let daysRequired = 5;
+            var date = new Date();
+            date.setDate(date.getDate()-1);
+            var weekday = new Array(7);
+            weekday[0] = "Chủ Nhật";
+            weekday[1] = "Thứ hai";
+            weekday[2] = "Thứ ba";
+            weekday[3] = "Thứ tư";
+            weekday[4] = "Thứ năm";
+            weekday[5] = "Thứ sáu";
+            weekday[6] = "Thứ bảy"; %>
+
+                <% for(let i = 0; i <= daysRequired; i++) {
+                date.setDate(date.getDate()+1);
+            %>
+                    <% if(i ==0){ %>
+                        <li class="active">
+                            <% }else{ %>
+                                <li class="">
+                                    <%}%>
+                                        <a class="list-group-item ml-1" href="#tab_<%=i%>" data-toggle="tab" style="height: 85px;font-size: 20px;border: 3px solid rgb(250, 250, 250);
+                    border-radius: 15px;">
+
+                                            <%=   "  "+ i ==0 ? 'Hôm nay' : weekday[date.getDay()]%>
+                                                <br><strong>
+                        <%=  " "+date.getDate()+" tháng "+(date.getMonth()+1) %>
+                        </strong>
+                                        </a>
+                                </li>
+                                <%} %>
+
+        </ul>
+
+
+        <!-- Synopsis column -->
+
+
+        <div class="tab-content">
+            <%  for (var i=0; i < valuedate.length; i++){ 
+                    if(i==0){ %>
+                <div class="tab-pane active" id="tab_<%=i%>">
+                    <% }else{  %>
+                        <div class="tab-pane" id="tab_<%=i%>">
+                <%}%>
+                     
+                    <!--  <tbaconten -->
+                            <%for (var h = 0; h < valuedate[i].length; h++){ %>
+                                <div class="panel panel-default"> 
+                                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="panel-title">
+                                            <button><h3><b>🎬<%= listname[h]%></b></h3></button>
+                                        </span>
+                                    </div>
+                                    
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <%  var arrRap = [];
+                                                            for(var j = 0; j < valuedate[i][h].length; j++){
+                                                                var flag = 1;
+                                                                for(var k = 0; k < arrRap.length; k++){
+                                                                    if(arrRap[k] == valuedate[i][h][j].rap.ten){
+                                                                        flag = 0;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                if(flag == 1){
+                                                                    arrRap.push(valuedate[i][h][j].rap.ten);
+                                                                }
+                                                            }
+                                                            for(var j = 0; j < arrRap.length; j++){ %>                        
+                                                                <div class="col-md-12 col-sm-12 col-xs-12 cinemaname"> <%= arrRap[j]%></div>
+                                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                        <ul class="nav nav-pills">
+                                                                            <% valuedate[i][h].forEach(function(item, index){ %>
+                                                                            <% if(item.rap.ten == arrRap[j]){ %>
+                                                                                <li><% phimct.forEach(function(value, index){ %><a rel="nofollow"  style="background-color: rgb(78, 78, 255);color: white;" 
+                                                                                class="showtime_btn btn btn-default seat_2" id="81205015" href="./<%= value.id %>/sc/<%= item.id %>/marap/<%= item.rap.id %>/ngay/<%= item.ngaychieu %>/gio/<%= item.batdau %>/phong/<%= item.maphong %>" role="button">
+                                                                                <%= item.batdau %>  <small>&nbsp;</small></a>  <% }); %></li>
+                                                                            <%}});%>
+                                                                        </ul>
+                                                                    </div>
+                                                            <% } %>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            <% } %>
+                        
+                    </div>
+                <% }%>
+            </div>
+  
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />

@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <% phimct.forEach(function(value, index){ %>
+        <div class="hero noprint filminfo wideRow" data-hero-delay="99999" data-hero>
+            <div class="heroScroll" data-hero-scroll>
+                <div class="heroItem" data-hero-item>
+                    <div class="heroItemImageContain">
+                        <div class="heroGradient"></div>
+                        <div class="heroBgShapes"></div>
+                        <div class="heroItemImage" style="background-image:url(/img/phims/<%= value.poster %>)" role="img" aria-label="A Quiet Place Part II image"></div>
+                        <div class="heroItemImageMobile" style="background-image:url(https://blobimageprocessor.azurewebsites.net/blob-image///www.movienewsletters.net/photos/295508RK.JPG?width=1440)" role="img" aria-label="A Quiet Place Part II image"></div>
+                    </div>
+                    <div class="heroItemContent">
+                        <div class="heroItemCopy">
+                            <div class="heroItemIntro">
+                                Đang Khởi Chiếu
+                            </div>
+
+                            <div class="heroItemIntro">
+                                <h1>
+                                    <%= value.ten %>
+                                </h1>
+                            </div>
+                            <div class="heroFilmDetailsContainer">
+                                <span class="heroFilmDetails">PG-13</span>
+                                <span class="heroFilmDetails"><%= value.thoiluong %> phút</span>
+                                <span class="heroFilmDetails">
+                                        <span><%= value.theloai %></span>
+
+                                </span>
+                            </div>
+                            <div class="heroItemLinks">
+                                <button data-trailer-btn="//m.boxoffice.media/mp4/295508_high.mp4" class="btn-outline invert">Xem Trailer <i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="film--wrapper">
+            <div class="container">
+                <div class="film--detail-content-top clearfix">
+                    <div class="row">
+                        <div class="col-thubnail-bhd col-md-3 col-sm-4">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+
+                                        <img class="d-block w-100 rounded" src="/img/phims/<%= value.image2 %>" height="400px" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100 rounded" src="/img/phims/<%= value.image1 %>" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100 rounded" src="/img/phims/<%= value.poster %>" alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Trước</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Sau</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product--view col-md-9 col-sm-8">
+                            <div class="film--detail ">
+                                <b><strong><h2 style="color: rgb(224, 223, 248);">Nội dung:</h2>
+                                </strong> <%= value.chitiet %></b>
+                            </div>
+                            <ul class="film--info">
+                                <li>
+                                    <span class="col-left">Thể loại</span>
+                                    <span class="col-right"><%= value.theloai %></span>
+                                </li>
+                                <li>
+                                    <span class="col-left">Khởi chiếu</span>
+                                    <span class="col-right"><%= value.ngaycongchieu %></span>
+                                </li>
+                                <li>
+                                    <span class="col-left">Ngôn ngữ</span>
+                                    <span class="col-right">Phụ đề tiếng Việt <%= value.category %></span>
+                                </li>
+                            </ul>
+
+                            <!--   href="/ghe" -->
+
+                            <%- include('../cumrap/giochieu.ejs') %>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="film--detail-bottom clearfix" style="margin-top: 50px;">
+                    <iframe class="link-ytb" width="1000px" height="450" src="<%= value.trailer %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <% }); %>
+                    <!-- film--detail-bottom -->
+
+            </div>
+
+
+        </div>
+</div>
+
+
+</div>

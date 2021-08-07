@@ -1,0 +1,97 @@
+<div id="payment_div" style="color: brown">
+    <div class="payment-row">
+        <div class="col-75">
+            <div class="payment-container">
+                <div class="seatStructure">
+                    <div class="row mb-4">
+                        <div class="col-sm smallBox greenBox">
+                            Ghế Đã Chọn
+                        </div>
+                        |
+                        <div class="col-sm smallBox redBox">
+                            Ghế Đã Được Đặt Trước
+                        </div>
+                        |
+                        <div class="col-sm smallBox emptyBox">
+                            Ghế Trống
+                        </div>
+                    </div>
+                    <table class="d-flex " id="seatsBlock">
+                        <tr>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+
+
+                        </tr>
+
+
+                        <% const numbers = ['A1','A2','B1','B2'];
+				var row = 18; var col = 15;
+				for(var i = 0; i < row; i++){ %>
+                            <tr>
+                                <td class="Hangghe">
+                                    <%= String.fromCharCode(i+65)%>
+                                </td>
+                                <% for(var j = 0; j < col; j++){ 
+							var ch = String.fromCharCode(i+65)+(j+1);
+							if(seat.includes(ch)){
+							%>
+                                    <td><input type="checkbox" class="seats" value="<%=ch%>" disabled></td>
+                                    <% }else { %>
+                                        <td><input type="checkbox" class="seats" value="<%=ch%>"></td>
+                                        <% } %>
+                                            <% } %>
+                            </tr>
+                            <% } %>
+                    </table>
+
+                </div>
+
+                <script>
+                    const fruits = [];
+                    var price = 49 + "000";
+                    var total = price;
+                    $("input").on("click", function() {
+                        //var numberseat=fruits.length +1;
+                        if ($(this).is(':checked')) {
+                            fruits.push($(this).val());
+                            var numberseat = fruits.length;
+                            if (numberseat > 6) {
+                                alert('Chỉ được chọn tối đa 6 ghế!');
+                                $(this).prop('checked', false);
+                                var index = fruits.indexOf($(this).val());
+                                fruits.splice(index, 1);
+                            }
+                        } else {
+                            var index = fruits.indexOf($(this).val());
+                            fruits.splice(index, 1);
+                        }
+                        numberseat = fruits.length;
+
+                        document.getElementById("demo").value = fruits;
+                        document.getElementById("demo1").innerHTML = fruits;
+                        document.getElementById("length").innerHTML = numberseat;
+                        document.getElementById("price").innerHTML = price * numberseat;
+                        /* 	 document.getElementById("total").innerHTML = price*numberseat;	 */
+                        document.getElementById("myText").value = price * numberseat;
+                    });
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>

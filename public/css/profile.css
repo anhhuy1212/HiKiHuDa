@@ -1,0 +1,82 @@
+
+  .list a{
+    width: 290px;
+    font-size: 25px;
+    color: #055FD8;
+  }
+  .list{
+    margin-left: 150px;
+  }
+  .card-title{
+    color: #055FD8;
+  }
+  .pageprofile a{
+    color: #ebee22;
+   
+  }
+  .title{
+    color: rgb(199, 70, 70);
+  }
+  .xem{
+    color: white;
+    margin-top: 10px;
+  }
+ 
+.dongkhoi img{
+  height: 200px;
+}
+  .list-group-item.active{
+    color: #d4dd29;
+    background-color: #055FD8;
+    border-color: #1c1d1707;
+    
+  }
+ 
+  .list-group-item{
+    background-color:white;
+  
+  }
+  .card-body{
+    margin-top: 1px;
+    color: whitesmoke;
+  }
+  .pageprofile h1{
+    color: #d4dd29  ;
+    margin-bottom: 50px;
+   
+  }
+  .btn-edit{
+    text-align: center;
+  }
+  
+  .tab-content{
+    width: 78%;
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-bottom: 100px;
+   
+  }
+  .content{
+    margin-top: 50px;
+    
+      padding: 10px;
+  }
+  .pageprofile textarea{
+    border-color: #055FD8;
+  }
+  .pageprofile button{
+    background-color: #d4dd29;
+  }
+  .pageprofile input{
+    border-color: #055FD8;
+    
+  }
+  .pageprofile input[type=submit]{
+    background-color: #055FD8;
+    
+  }
+  
+  .page-heading em {
+    font-style: normal;
+    font-weight: 200;
+  }

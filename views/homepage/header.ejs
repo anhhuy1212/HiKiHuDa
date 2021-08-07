@@ -1,0 +1,88 @@
+<header class="header" data-header>
+    <div class="topNavContainer">
+        <div class="gridRow navRow">
+            <div class="gridCol-l-12 gridCol-m-12 gridCol-s-12">
+                <nav class="topNav">
+                    <a class="topNavLink" href="https://www.showcasesubscribe.com/" tabindex="2" aria-label="Showcase Subscribe">Về Chúng Tôi</a>
+                    <a class="topNavLink" href="/private-rental" tabindex="2" aria-label="Private Rental">Thẻ Thành Viên</a>
+                    <a class="topNavLink" href="http://popcornclub.showcasecinemas.com/" tabindex="2" aria-label="Popcorn Club">Vé Giảm Giá</a>
+                    <a class="topNavLink" href="/starpass/register/" tabindex="2" aria-label="Join Starpass">HIKIHUDA CLUB</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="gridRow navRow">
+        <div class="gridCol-l-12 gridCol-m-12 gridCol-s-12">
+            <div class="pullLeft">
+                <a href="/" class="headerLogoLink" tabindex="1" aria-label="Showcase Cinemas homepage">
+                    <img class="headerLogoImage" src="/img/2.png" alt="Showcase Cinemas logo" />
+                </a>
+            </div>
+            <div class="pullRight">
+                <button class="headerNavBtn" data-headernav-btn aria-expanded="false" aria-haspopup="true" aria-label="Toggle Menu" tabindex="3">
+                    <span class="headerNavBtnIcon"></span>
+                </button>
+                <nav class="headerNav" data-headernav-list>
+                    <div class="PrimaryNav">
+                        <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/cumrap" tabindex="2" data-original-href="/movies/" data-apply-cinema-friendly="True" data-movie-filter="" aria-label="Movies"><span class="">Phim</span></a>
+                        </div>
+                        <!--   <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/suatchieu" tabindex="2" data-original-href="/showtimes/" data-apply-cinema-friendly="True" data-movie-filter="" aria-label="Showtimes"><span class="">Showtimes</span></a>
+                        </div> -->
+                        <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/hethongrap" tabindex="2" data-original-href="/theaters/" data-apply-cinema-friendly="False" data-movie-filter="" aria-label="Theaters"><span class="">Hệ Thống Rạp</span></a>
+                        </div>
+                        <div class="headerNavSubGroup">
+                        </div>
+                    </div>
+                    <div class="mobileSecondaryNav">
+                        <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/movies/" tabindex="0" data-original-href="/movies/" data-apply-cinema-friendly="True" data-movie-filter="" aria-label="Movies"><span class="">Phim</span></a>
+                        </div>
+                        <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/events/" tabindex="0" data-original-href="/events/" data-apply-cinema-friendly="True" data-movie-filter="" aria-label="Events"><span class="">Sự Kiện</span></a>
+                        </div>
+                        <!--  <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/showtimes/" tabindex="0" data-original-href="/showtimes/" data-apply-cinema-friendly="True" data-movie-filter="" aria-label="Showtimes"><span class="">Showtimes</span></a>
+                        </div> -->
+                        <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/theaters/" tabindex="0" data-original-href="/theaters/" data-apply-cinema-friendly="False" data-movie-filter="" aria-label="Theaters"><span class="">Hệ Thông Rạp</span></a>
+                        </div>
+                        <div class="headerNavSubGroup">
+                            <a class="headerNavLink " href="/dining/" tabindex="0" data-original-href="/dining/" data-apply-cinema-friendly="False" data-movie-filter="" aria-label="Dining"><span class="">Dining</span></a>
+                        </div>
+
+
+
+                        <a href="#" class="btn btn-primaryheaderNavLink btn-outline btn-starpass" role="button" aria-pressed="true">Primary link</a>
+
+                        <div>
+
+                        </div>
+                    </div>
+                </nav>
+
+                <% if( typeof(user) !="undefined") { %>
+
+                    <a href="/info" class="headerNavLink btn-outline btn-starpass" style="background-color: #055FD8;color: white; border: 2px solid #055FD8;
+                   " href="/RegAndLogin" tabindex="2" aria-label="LOGIN"><i class="fa fa-user-circle-o mr-2" aria-hidden="true"></i><%= user.hoten %></a>
+                    <% if(user.vaitro==0){ %>
+                        <a class="headerNavLink btn-outline btn-starpass" style="background-color: #055FD8;color: white;border: 2px solid #055FD8" href="/admin">Quản Lý Trang</a>
+                        <% } %>
+                            <a class="headerNavLink btn-outline btn-starpass" style="background-color: #055FD8;color: white;border: 2px solid #055FD8" href="/logout">Đăng Xuất</a>
+                            <% } 
+            else
+            { %>
+                                <a class="headerNavLink btn-outline btn-starpass" href="/RegAndLogin" tabindex="2" style="background-color: #055FD8;color: white;border: 2px solid #055FD8" aria-label="LOGIN">Đăng Nhập</a>
+                                <% } %>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+</header>
+</div>
